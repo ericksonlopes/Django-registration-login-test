@@ -54,7 +54,7 @@ ROOT_URLCONF = 'seu_login.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,3 +118,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# quando o usuario fizer login
+LOGIN_REDIRECT_URL = '/admin/'
+# quando o usuario fizer logout
+LOGOUT_REDIRECT_URL = 'accounts/login'
+
