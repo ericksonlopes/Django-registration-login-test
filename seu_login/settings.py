@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'login_app'
 ]
 
 MIDDLEWARE = [
@@ -54,6 +55,7 @@ ROOT_URLCONF = 'seu_login.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # Configurando a pasta base dos templates
         'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -119,8 +121,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# quando o usuario fizer login
-LOGIN_REDIRECT_URL = '/admin/'
-# quando o usuario fizer logout
-LOGOUT_REDIRECT_URL = 'accounts/login'
 
