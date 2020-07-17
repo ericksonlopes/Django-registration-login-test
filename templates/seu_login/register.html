@@ -5,6 +5,11 @@
 {% block content %}
 <form action="/register/" method="post">
     {% csrf_token %}
+    {% if message %}
+        <div class="alert alert-primary">
+            {{ message }}
+        </div>
+    {% endif %}
     <div class="form-group">
         <label for="username" >Nome</label>
         <input type="text" class="form-control" id="username" name="username"

@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
@@ -21,7 +22,7 @@ def login(request: HttpRequest):
         # login apenas / autenticando no sistema
         django_login(request, user)
         # retorna página home
-        return redirect('/home/')
+        return render(request, 'seu_login/home.html', {'message': 'Usuário autenticado!'})
 
     # caso não seja autenticado
     return render(request, 'seu_login/login.html', {'message': 'Credenciais invalidas'})
@@ -35,6 +36,20 @@ def logout(request):
 def register(request):
     if request.method == 'GET':
         return render(request, 'seu_login/register.html')
+
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    email = request.POST.get('email')
+
+    try:
+        User.objects.create_user(
+            username=username,
+            password=password,
+            email=email)
+    except:
+        return render(request, 'seu_login/register.html', {'message': f'Nome do usuario existente'})
+    else:
+        return render(request, 'seu_login/home.html', {'message': f'Usuário registrado, Seja bem vindo {username}'})
 
 
 @login_required(login_url='/login/')
