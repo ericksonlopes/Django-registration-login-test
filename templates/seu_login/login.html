@@ -8,9 +8,14 @@
 {% block content %}
     <div class="container">
         <h3>Login de usuário</h3>
+        {% if message %}
+        <div class="alert alert-primary">
+            {{ message }}
+        </div>
+        {% endif %}
 
-        <form>
-
+        <form action="/login/" method="post" >
+            {% csrf_token %}
             <div>
                 <label for="username"></label>
                 <input type="text" class="form-control" id="username" name="username"
@@ -23,7 +28,7 @@
                        placeholder="Digite aqui, sua senha">
             </div>
             <br>
-            <button class="btn btn-primary">Entrar </button>
+            <button class="btn btn-primary" type="submit">Entrar </button>
 
         </form>
     </div>
