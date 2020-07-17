@@ -3,5 +3,23 @@
 {% block title %} Cadastro {% endblock %}
 
 {% block content %}
-
+<form action="/register/" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="username" >Nome</label>
+        <input type="text" class="form-control" id="username" name="username"
+        placeholder="Insira um nome para seu usuário" required autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="password" class="form-control" id="password" name="password"
+        placeholder="Insira um nome para sua senha" required autocomplete="off">
+    </div>
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" id="email" name="email"
+        placeholder="Insira um nome para seu email" required autocomplete="off">
+    </div>
+    <button class="btn btn-primary" type="submit" >Enviar</button>
+</form>
 {% endblock %}

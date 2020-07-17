@@ -16,20 +16,21 @@
 
         <form action="/login/" method="post" >
             {% csrf_token %}
-            <div>
-                <label for="username"></label>
+            <div class="form-group">
+                <label for="username">Nome ou e-mail</label>
                 <input type="text" class="form-control" id="username" name="username"
-                       placeholder="Entre com o usuario ou e-mail">
+                       placeholder="Entre com o nome de usuário ou e-mail">
             </div>
 
-            <div>
-                <label for="password"></label>
-                <input type="text" class="form-control" id="password" name="password"
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" class="form-control" id="password" name="password"
                        placeholder="Digite aqui, sua senha">
             </div>
             <br>
             <button class="btn btn-primary" type="submit">Entrar </button>
 
         </form>
+        <a href="/register/">Cadastre-se</a>
     </div>
 {% endblock%}

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
@@ -31,5 +32,11 @@ def logout(request):
     return redirect('/')
 
 
+def register(request):
+    if request.method == 'GET':
+        return render(request, 'seu_login/register.html')
+
+
+@login_required(login_url='/login/')
 def home(request):
     return render(request, 'seu_login/home.html')
