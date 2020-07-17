@@ -1,6 +1,6 @@
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as django_login
+from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 
 
 def login(request: HttpRequest):
@@ -24,6 +24,11 @@ def login(request: HttpRequest):
 
     # caso não seja autenticado
     return render(request, 'seu_login/login.html', {'message': 'Credenciais invalidas'})
+
+
+def logout(request):
+    django_logout(request)
+    return redirect('/')
 
 
 def home(request):
